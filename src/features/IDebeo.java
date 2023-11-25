@@ -10,4 +10,6 @@ import tarefa.Tarefa;
  */
 public interface IDebeo {
     public Boolean criar(Tarefa tarefa);
+    
+    public void excluir(String titulo);
 }

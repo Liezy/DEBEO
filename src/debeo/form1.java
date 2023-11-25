@@ -38,7 +38,7 @@ public class form1 extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
         btnCriar = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -61,8 +61,13 @@ public class form1 extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("DEBEO");
 
-        jButton4.setBackground(new java.awt.Color(235, 52, 52));
-        jButton4.setText("X");
+        btnExcluir.setBackground(new java.awt.Color(235, 52, 52));
+        btnExcluir.setText("X");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         btnCriar.setBackground(new java.awt.Color(82, 209, 51));
         btnCriar.setText("+");
@@ -92,7 +97,7 @@ public class form1 extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
         );
         jPanel3Layout.setVerticalGroup(
@@ -101,7 +106,7 @@ public class form1 extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCriar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(16, Short.MAX_VALUE))
@@ -215,6 +220,7 @@ public class form1 extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Esta tarefa já foi criada", "ATENÇÃO",JOptionPane.INFORMATION_MESSAGE);
         }
+        limpar();
         
     }//GEN-LAST:event_btnCriarActionPerformed
 
@@ -225,6 +231,27 @@ public class form1 extends javax.swing.JFrame {
     private void txtDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescricaoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDescricaoActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        int linhaSelecionada = tabelaTarefas.getSelectedRow();
+        
+        if (linhaSelecionada >= 0){
+            int resultado = JOptionPane.showConfirmDialog(this,"Deseja realmente excluir esta tarefa?", "CUIDADO",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE);
+            
+            if(resultado == JOptionPane.YES_OPTION){
+                String titulo = (String) tabelaTarefas.getValueAt(linhaSelecionada, 1);
+                this.tarefa.excluir(titulo);
+                modelo.removeRow(linhaSelecionada);
+                
+                JOptionPane.showMessageDialog(null, "Tarefa excluída com sucesso", "Sucesso",JOptionPane.INFORMATION_MESSAGE);
+                limpar();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Nenhuma tarefa selecionada.", "ERRO",JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -263,7 +290,7 @@ public class form1 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCriar;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

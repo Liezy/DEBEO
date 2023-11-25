@@ -31,4 +31,9 @@ public class TarefaMap implements IDebeo {
         return true;
     }
     
+    @Override
+    public void excluir(String titulo) {
+        Tarefa tarefaCadastrada = map.get(titulo);
+        map.remove(tarefaCadastrada.getTitulo(), tarefaCadastrada);
+    }
 }
