@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
 public class form1 extends javax.swing.JFrame {
 
     private DefaultTableModel modelo = new DefaultTableModel();
-    private IDebeo tarefa;
+    private IDebeo tarefa_interface;
    
     /**
      * Creates new form form1
@@ -27,8 +27,7 @@ public class form1 extends javax.swing.JFrame {
         iniciarComponentesCustom();
         
         btnSalvar.setVisible(false);
-        //this.tarefa = new TarefaMap();
-        this.tarefa = new TarefaSet();
+        this.tarefa_interface = new TarefaSet();
     }
 
     /**
@@ -238,14 +237,15 @@ public class form1 extends javax.swing.JFrame {
         }
         
         Tarefa tarefa = new Tarefa(titulo, descricao);
-        Boolean isCriado = this.tarefa.criar(tarefa);
+        Boolean isCriado = tarefa_interface.criar(tarefa);
         
         if(isCriado){
             modelo.addRow(new Object[]{tarefa.getTitulo(), tarefa.getDescricao()});
+            limpar();
         } else {
             JOptionPane.showMessageDialog(null, "Esta tarefa já foi criada", "ATENÇÃO",JOptionPane.INFORMATION_MESSAGE);
         }
-        limpar();
+        
         
     }//GEN-LAST:event_btnCriarActionPerformed
 
@@ -278,7 +278,7 @@ public class form1 extends javax.swing.JFrame {
             
             if(resultado == JOptionPane.YES_OPTION){
                 String titulo = (String) tabelaTarefas.getValueAt(linhaSelecionada, 1);
-                this.tarefa.excluir(titulo);
+                this.tarefa_interface.excluir(titulo);
                 modelo.removeRow(linhaSelecionada);
                 
                 JOptionPane.showMessageDialog(null, "Tarefa excluída com sucesso", "Sucesso",JOptionPane.INFORMATION_MESSAGE);
@@ -309,6 +309,7 @@ public class form1 extends javax.swing.JFrame {
             limpar();
 
             JOptionPane.showMessageDialog(null, "Tarefa editada com sucesso", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            btnSalvar.setVisible(false);
         } else {
             JOptionPane.showMessageDialog(null, "Nenhuma tarefa selecionada para salvar.", "ERRO", JOptionPane.INFORMATION_MESSAGE);
         }

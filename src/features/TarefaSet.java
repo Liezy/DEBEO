@@ -13,6 +13,7 @@ import tarefa.Tarefa;
  * @author alenc
  */
 public class TarefaSet implements IDebeo {
+    
     private Set<Tarefa> set;
     
     public TarefaSet() {
