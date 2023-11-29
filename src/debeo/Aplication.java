@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package debeo;
-import javax.swing.JFrame;
 
 /**
  *
@@ -11,7 +10,7 @@ import javax.swing.JFrame;
  */
 public class Aplication {
     public static void main(String[] args){
-        JFrame tela = new form1();
-        tela.setVisible(true);
+        form1 frame = new form1();
+        frame.setVisible(false);
     } 
 }

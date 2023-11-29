@@ -108,8 +108,8 @@
                           <Component id="btnSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="275" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="308" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -129,6 +129,8 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel2" min="-2" pref="135" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
+                          <Component id="btnContador" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="167" max="-2" attributes="0"/>
                           <Component id="btnCriar" min="-2" pref="40" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="btnEditar" min="-2" pref="40" max="-2" attributes="0"/>
@@ -147,6 +149,7 @@
                               <Component id="btnExcluir" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                               <Component id="btnCriar" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                               <Component id="btnEditar" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="btnContador" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="16" max="32767" attributes="0"/>
                       </Group>
@@ -199,6 +202,14 @@
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditarActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnContador">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Contador"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnContadorActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>

@@ -48,5 +48,10 @@ public class TarefaMap implements IDebeo {
         tarefaCadastrada.setTitulo(tarefa.getTitulo());
         tarefaCadastrada.setDescricao(tarefa.getDescricao());
     }
+    
+    @Override
+    public int contarTarefas(){
+        return map.size();
+    }
 
 }

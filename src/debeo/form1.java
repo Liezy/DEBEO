@@ -46,6 +46,7 @@ public class form1 extends javax.swing.JFrame {
         btnExcluir = new javax.swing.JButton();
         btnCriar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
+        btnContador = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txtTitulo = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -91,6 +92,13 @@ public class form1 extends javax.swing.JFrame {
             }
         });
 
+        btnContador.setText("Contador");
+        btnContador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnContadorActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -99,6 +107,8 @@ public class form1 extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnContador)
+                .addGap(167, 167, 167)
                 .addComponent(btnCriar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -114,7 +124,8 @@ public class form1 extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCriar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnContador))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
@@ -191,8 +202,8 @@ public class form1 extends javax.swing.JFrame {
                     .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalvar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -231,8 +242,14 @@ public class form1 extends javax.swing.JFrame {
         String titulo = txtTitulo.getText();
         String descricao = txtDescricao.getText();
         
-        if (!isCamposValidos(titulo, descricao)) {
-            JOptionPane.showMessageDialog(null, "Existem campos a serem preenchidos", "ATENÇÃO",JOptionPane.INFORMATION_MESSAGE);
+        if (titulo.isEmpty() && descricao.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Nenhum campo foi preenchido", "ATENÇÃO",JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }else if(titulo.isEmpty()){
+            JOptionPane.showMessageDialog(null, "O título não foi preenchido", "ATENÇÃO",JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }else if(descricao.isEmpty()){
+            JOptionPane.showMessageDialog(null, "A descrição não foi preenchida", "ATENÇÃO",JOptionPane.INFORMATION_MESSAGE);
             return;
         }
         
@@ -315,6 +332,11 @@ public class form1 extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
+    private void btnContadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContadorActionPerformed
+        int numeroDeTarefas = tarefa_interface.contarTarefas();
+        JOptionPane.showMessageDialog(null, "Número de tarefas: " + numeroDeTarefas, "Informação", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_btnContadorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -351,6 +373,7 @@ public class form1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnContador;
     private javax.swing.JButton btnCriar;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnExcluir;

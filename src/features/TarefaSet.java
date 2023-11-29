@@ -41,15 +41,16 @@ public class TarefaSet implements IDebeo {
     }
     
     @Override
-    public void alterar(Tarefa tarefa){
-        if(this.set.contains(tarefa)){
-            for(Tarefa tarefaCriada : this.set){
-                if(tarefaCriada.equals(tarefa)){
-                     tarefaCriada.setTitulo(tarefa.getTitulo());
-                     tarefaCriada.setDescricao(tarefa.getDescricao());
-                     break;
-                }
-            }
+    public void alterar(Tarefa tarefa) {
+        if (this.set.contains(tarefa)) {
+            this.set.remove(tarefa); // Remover a tarefa antes de adicionar a versão alterada
+            this.set.add(tarefa);    // Adicionar a versão alterada
         }
     }
+    
+    @Override
+    public int contarTarefas(){
+        return set.size();
+    }
+
 }

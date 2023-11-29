@@ -14,4 +14,6 @@ public interface IDebeo {
     public void excluir(String titulo);
     
     public void alterar(Tarefa tarefa);
+    
+    public int contarTarefas();
 }
